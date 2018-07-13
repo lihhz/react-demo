@@ -1,0 +1,199 @@
+.AppHeader {
+    position: relative;
+    z-index: 100;
+    min-width: 1032px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(26, 26, 26, .1);
+    background-clip: content-box;
+}
+
+.AppHeaderInner {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 1000px;
+    height: 52px;
+    padding: 0 16px;
+    margin: 0 auto;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    transition: -webkit-transform .3s;
+    transition: transform .3s, -webkit-transform .3s;
+}
+
+.AppHeader-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    height: 30px;
+    margin-right: 18px;
+    margin-left: 27px;
+    color: #999;
+}
+
+.AppHeader-navItem:first-child {
+    padding-left: 0;
+}
+
+.AppHeader-navItem.is-active {
+    color: #444;
+}
+
+.AppHeader-navItem {
+    padding: 0 15px;
+    font-size: 15px;
+    line-height: 30px;
+    color: #8590a6;
+}
+
+.SearchBar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.SearchBar-toolWrapper {
+    position: relative;
+    z-index: 104;
+    width: 326px;
+}
+
+.SearchBar-tool {
+    position: relative;
+    float: left;
+    overflow: hidden;
+}
+
+.SearchBar-tool .Popover {
+    display: block;
+}
+
+.Popover {
+    position: relative;
+    display: inline-block;
+}
+.Input-wrapper {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 180px;
+    height: 34px;
+    padding: 4px 10px;
+    font-size: 14px;
+    background: #fff;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    box-sizing: border-box;
+    transition: background .2s, border .2s;
+}
+
+.Input-wrapper.Input-wrapper--grey {
+    background: #f6f6f6;
+}
+
+.SearchBar-input {
+    width: 326px;
+    padding-left: 16px;
+    transition: width .2s ease, background .3s ease;
+}
+
+
+input.Input {
+    color: #1a1a1a;
+    height: 24px;
+    line-height: 24px;
+}
+
+.Input {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 0;
+    overflow: hidden;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    background: transparent;
+    border: none;
+    outline: none;
+    resize: none;
+}
+
+.Input-after {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: auto;
+    -webkit-transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
+}
+
+.SearchBar-searchIcon {
+    position: absolute;
+    right: -11px;
+    top: -17px;
+    bottom: -17px;
+    background: transparent;
+    border: transparent;
+    padding: 0 12px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    transition: fill .3s ease;
+}
+
+.AppHeader-userInfo {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.AppHeader-fakeButton:not(:last-child) {
+    margin-right: 40px;
+}
+
+.Button--withIcon.Button--link, .Button--withIcon.Button--plain {
+    padding: 0;
+}
+
+.Button--withIcon.Button--iconOnly {
+    padding: 0 4px;
+}
+
+.AppHeader-fakeButton {
+    font-size: 20px;
+}
+
+.Button--link, .Button--plain {
+    height: auto;
+    padding: 0;
+    line-height: inherit;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+}

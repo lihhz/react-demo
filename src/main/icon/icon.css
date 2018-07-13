@@ -1,0 +1,28 @@
+
+.TopstoryHeader-navItem {
+    display: inline-block;
+    transition: color .2s ease-in;
+    font-size: 16px;
+    color: #1a1a1a
+}
+
+.TopstoryHeader-navItem .Icon {
+    margin-right: 8px
+}
+
+.TopstoryHeader-navItem:hover {
+    color: #175199;
+    cursor: pointer
+}
+
+html[data-theme=dark] .TopstoryHeader-navItem:hover {
+    color: #175199
+}
+
+.TopstoryHeader-navItem + .TopstoryHeader-navItem {
+    margin-left: 40px
+}
+
+html[data-theme=dark] .TopstoryHeader-navItem {
+    color: #999
+}

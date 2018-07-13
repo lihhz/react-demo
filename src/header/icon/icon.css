@@ -1,0 +1,6 @@
+/*类的优先级是由类在css文件中定义的顺序决定的：越后定义优先级越高！*/
+.ZhihuLogo {
+    height: 30px;
+    width: 64px;
+    fill: #0084ff;
+}
