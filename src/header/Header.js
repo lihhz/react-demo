@@ -8,23 +8,43 @@ import ZiProfile from "./icon/ZiProfile";
 import ZiComments from "./icon/ZiComments";
 import Registe from "../sign/registe/Registe";
 
+import $ from 'jquery';
 class Header extends Component {
-    modal = <Registe/>;
-    login(){
-        ReactDOM.render(this.modal,document.body);
-    }
     constructor(){
         super();
         this.state = {
-            clientWidth : 1300
+            clientWidth : 1300,
+            searchFocus : false,
+            searchValue:''
         };
         this.login = this.login.bind(this);
     }
     componentDidMount(){
-        this.setState({
-            clientWidth : document.documentElement.clientWidth
+        this.setState(()=>{
+            return {clientWidth : document.documentElement.clientWidth}
         });
     }
+
+    login(){
+        ReactDOM.render(<Registe/>,document.body);
+    }
+    searchInputFocus(){
+        this.setState(()=>{
+            return {searchFocus : true}
+        });
+    }
+    searchInputBlur(){
+        this.setState(()=>{
+            return {searchFocus : false}
+        });
+    }
+    change(event) {
+        this.setState({searchValue: event.target.value});
+    }
+    searchBtnClick(){
+        this.props.searchMainItem(this.state.searchValue);
+    }
+
     render() {
         return (
             <header className={`Sticky AppHeader ${this.props.scrollTop > 0 ? 'is-fixed' : ''}`} style={this.props.scrollTop > 0 ? {width: this.state.clientWidth+'px', top: '0px', left: '0px'} : {width: this.state.clientWidth+'px'}}>
@@ -42,17 +62,21 @@ class Header extends Component {
                             <form className="SearchBar-tool">
                                 <div>
                                     <div className="Popover">
-                                        <div className="SearchBar-input Input-wrapper Input-wrapper--grey">
-                                            <input type="text" maxLength="100" autoComplete="off" role="combobox"
+                                        <div className={"SearchBar-input Input-wrapper Input-wrapper--grey " + (this.state.searchFocus ? "SearchBar-focusedInput is-focus":"")}>
+                                            <input onBlur={this.searchInputBlur.bind(this)}
+                                                   onFocus={this.searchInputFocus.bind(this)}
+                                                   onChange={this.change.bind(this)}
+                                                   value={this.state.searchValue}
+                                                type="text" maxLength="100" autoComplete="off" role="combobox"
                                                    aria-expanded="false" aria-autocomplete="list"
                                                    aria-activedescendant="AutoComplete2-topSearch--1"
                                                    id="Popover1-toggle"
                                                    aria-haspopup="true" aria-owns="Popover1-content" className="Input"
-                                                   placeholder="搜索你感兴趣的内容…" value=""/>
+                                                   placeholder="搜索你感兴趣的内容…" />
                                             <div className="Input-after">
-                                                <button aria-label="搜索" type="button"
-                                                        className="Button SearchBar-searchIcon Button--primary">
-                                                    <IconSearch/>
+                                                <button aria-label="搜索" type="button" onClick={this.searchBtnClick.bind(this)}
+                                                        className={"Button SearchBar-searchIcon Button--primary " + (this.state.searchValue === '' ? '' : 'SearchBar-hasValue SearchIcon Button--blue')}>
+                                                    <IconSearch searchValue = {this.state.searchValue}/>
                                                 </button>
                                             </div>
                                         </div>
@@ -60,6 +84,7 @@ class Header extends Component {
                                 </div>
                             </form>
                         </div>
+                        <button type="button" className={"Button QuestionAskButton SearchBar-askButton Button--primary Button--blue " + (this.state.searchFocus ? "SearchBar-hiddenAskButton" : "")}>提问</button>
                     </div>
                     <div className="AppHeader-userInfo">
                         <button type="button"

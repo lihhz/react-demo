@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ContentLayoutMainColumn from './ContentLayoutMainColumn';
+import ContentLayoutMainColumn from './main-col/ContentLayoutMainColumn';
 import ContentLayoutSideColumn from './ContentLayoutSideColumn';
 
 class Main extends Component {

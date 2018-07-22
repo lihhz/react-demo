@@ -10,7 +10,8 @@ class App extends Component {
         this.state = {
             scrollTop: 0,
             isBottom: false,
-            img:null
+            img:null,
+            searchValue : ''
         };
         this.scrollHandler = this.handleScroll.bind(this);
     }
@@ -32,31 +33,24 @@ class App extends Component {
         this.setState({scrollTop: scrollTop, isBottom: isBottom});
     }
 
+    searchMainItem(_searchValue){
+        this.setState(()=>{return {searchValue:_searchValue}});
+    }
     render() {
         return (
-            <div className="App">
+            <div>
                 <div>
-                    <div>
-                        <Header scrollTop={this.state.scrollTop}/>
-                        {this.state.scrollTop > 0 ?
-                            <div className="Sticky--holder"
-                                 style={{
-                                     position: 'relative',
-                                     top: '0px',
-                                     right: '0px',
-                                     bottom: '0px',
-                                     left: '0px',
-                                     display: 'block',
-                                     float: 'none',
-                                     margin: '0px',
-                                     height: '52px'
-                                 }}>
-                            </div>
-                            : ''
-                        }
-                    </div>
-                    <Main pageParam={this.state}/>
+                    <Header searchMainItem={this.searchMainItem.bind(this)} scrollTop={this.state.scrollTop}/>
+                    {this.state.scrollTop > 0 ?
+                        <div className="Sticky--holder"
+                             style={{ position: 'relative', top: '0px', right: '0px', bottom: '0px',
+                                 left: '0px', display: 'block', float: 'none',  margin: '0px', height: '52px'
+                             }}>
+                        </div>
+                        : ''
+                    }
                 </div>
+                <Main pageParam={this.state}/>
             </div>
         );
     }

@@ -5,7 +5,7 @@ import './icon.css';
 class IconSearch extends Component {
     render() {
         return (
-            <svg viewBox="0 0 16 16" className="Icon Icon--search" width="16"
+            <svg viewBox="0 0 16 16" className={"Icon Icon--search"} width="16"
                  height="16" aria-hidden="true"
                  style={{height:'16px', width:'16px'}}><title></title>
                 <g>

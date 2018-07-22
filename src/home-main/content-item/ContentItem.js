@@ -14,7 +14,6 @@ class HomeMainItem extends Component {
         }
     }
     componentDidMount(){
-        debugger
         this.setState(function () {
             return {
                 summary : this.props.itemInfo.summary.length > 74 ? this.props.itemInfo.summary.substr(0,74) + '...' : this.props.itemInfo.summary
