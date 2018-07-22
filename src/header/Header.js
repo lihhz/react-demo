@@ -6,7 +6,7 @@ import IconSearch from './icon/IconSearch.js';
 import ZiBell from "./icon/ZiBell";
 import ZiProfile from "./icon/ZiProfile";
 import ZiComments from "./icon/ZiComments";
-import Login from "../login/Login";
+import Login from "../registe/Registe";
 
 class Header extends Component {
     modal = <Login/>;
