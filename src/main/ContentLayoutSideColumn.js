@@ -1,18 +1,32 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+import Login from '../login/Login';
 
 class ContentLayoutSideColumn extends Component {
+    constructor(){
+        super();
+        this.state = {
+            showLogin:false
+        };
+    }
+    showLogin(){
+        let newDIV = document.createElement('div');
+        let desktop = document.getElementById('app-body');
+        desktop.appendChild(newDIV);
+        ReactDOM.render(<Login/>, newDIV);
+    }
     render() {
         return (
             <div className="ContentLayout-sideColumn">
                 <div>
                     <div>
-                        <div className={`Sticky ${this.props.scrollTop > 200 ? 'is-fixed' : ''}`} style={this.props.scrollTop > 200 ? {width: '296px', top: '-120px', left: '878.5px'} : {}}>
+                        <div className={`Sticky ${this.props.pageParam.scrollTop > 200 ? 'is-fixed' : ''}`} style={this.props.pageParam.scrollTop > 200 ? {width: '296px', top: '-120px', left: '878.5px'} : {}}>
                             <div className="Card">
                                 <div className="HomeSidebar-signBanner">
                                     <div className="HomeSidebar-signBannerHeader">
                                         <div className="HomeSidebar-signBannerTitle">加入知乎<br/>发现更大的世界</div>
                                         <div className="HomeSidebar-signBannerActions">
-                                            <button data-za-detail-view-id="2278" type="button"
+                                            <button data-za-detail-view-id="2278" type="button" onClick={this.showLogin.bind(this)}
                                                     className="Button HomeSidebar-signBannerButton Button--blue Button--spread">登录
                                             </button>
                                             <button data-za-detail-view-id="2277" type="button"
@@ -49,8 +63,7 @@ class ContentLayoutSideColumn extends Component {
                                             alt="知乎实验室"/>
                                     </a>
                                 </div>
-                                <div>
-                                </div>
+                                <div></div>
                             </div>
                             <footer className="Footer">
                                 <a className="Footer-item" target="_blank"

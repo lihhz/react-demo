@@ -3,14 +3,35 @@ import QuestionAskButton from './icon/QuestionAskButton';
 import ArticleWriteButton from "./icon/ArticleWriteButton";
 import AnswerButton from "./icon/AnswerButton";
 import HomeMainItem from '../home-main/HomeMainItem';
+import $ from 'jquery';
 
 class Main extends Component {
+    getData($this) {
+        $.post('http://localhost:8081/web-spider/spiderBaiduBaike/selectByCondition',
+            {currentPage: $this.state.currentPage + 1, pageSize: $this.state.pageSize}, function (data, status) {
+                $this.setState({
+                    testArr: $this.state.testArr.concat(data.list),
+                    currentPage: $this.state.currentPage + 1
+                });
+            });
+    }
+    componentDidMount(){
+        this.getData(this);
+    }
+    componentWillReceiveProps(newProps){
+        if(newProps.pageParam.isBottom) {
+            this.getData(this);
+        }
+    }
     constructor(){
         super();
         this.state = {
-            testArr : [1,2,3,4,5,6]
+            currentPage:0,
+            pageSize:10,
+            testArr:[]
         };
     }
+
     render() {
         return (
             <div className="ContentLayout-mainColumn">
@@ -35,7 +56,7 @@ class Main extends Component {
                         </div>
                     </div>
                     <div>
-                        {this.state.testArr.map((item)=><HomeMainItem key={item}/>)}
+                        {this.state.testArr.map((item)=><HomeMainItem itemInfo={item} key={item.id}/>)}
 
                     </div>
                     <div></div>

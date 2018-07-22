@@ -5,9 +5,20 @@ import ZiComment from "../icon/ZiComment";
 import ZiShare from "../icon/ZiShare";
 import ZiStar from "../icon/ZiStar";
 import ZiHeart from "../icon/ZiHeart";
+import ArrowUp from "../icon/ArrowUp";
 
 
 class ContentItemActions extends Component {
+    ArrowUpBtn(props) {
+        return (
+            <button onClick={props.lessBtnClick.bind(this)} data-zop-retract-question="true" type="button"
+                    className="Button ContentItem-action ContentItem-rightButton Button--plain">
+                <span className="RichContent-collapsedText">收起</span>
+                <ArrowUp/>
+            </button>
+        );
+    }
+
     render() {
         return (
             <div className="ContentItem-actions">
@@ -15,7 +26,7 @@ class ContentItemActions extends Component {
                     <button aria-label="赞同" type="button" className="Button VoteButton VoteButton--up">
                         <span style={{display: 'inline-flex', alignItems: 'center'}}>&#8203;
                             <VoteUpButton/>
-                        </span>赞同 14K
+                        </span>赞同 {this.props.itemInfo.voteCount}
                     </button>
                     <button
                         aria-label="反对" type="button"
@@ -59,8 +70,10 @@ class ContentItemActions extends Component {
                         <ZiHeart/>
                     </span>感谢
                 </button>
+                {this.props.isCollapsed ? '' : <this.ArrowUpBtn lessBtnClick = {this.props.lessBtnClick.bind(this)}/>}
             </div>
         );
     }
 }
+
 export default ContentItemActions;

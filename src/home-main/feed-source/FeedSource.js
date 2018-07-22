@@ -8,7 +8,7 @@ class FeedSource extends Component {
         return (
             <div className="FeedSource">
                 <FeedSourceFirstLine/>
-                <AuthorInfo/>
+                <AuthorInfo itemInfo={this.props.itemInfo}/>
             </div>
         );
     }

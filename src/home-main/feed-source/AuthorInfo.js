@@ -6,7 +6,7 @@ class FeedSource extends Component {
         return (
             <div className="AuthorInfo FeedSource-byline AuthorInfo--plain" itemprop="author" itemscope=""
                  itemtype="http://schema.org/Person">
-                <meta itemprop="name" content="看着不像好人"/>
+                <meta itemprop="name" content={this.props.itemInfo.author}/>
                 <meta itemprop="image" content="https://pic4.zhimg.com/v2-b4dfde394e429efe34225bc97080da81_b.jpg"/>
                 <meta itemprop="url" content="https://www.zhihu.com/people/bao-zi-lian-54"/>
                 <meta itemprop="zhihu:followerCount"/>
@@ -21,9 +21,9 @@ class FeedSource extends Component {
                                href="//www.zhihu.com/people/bao-zi-lian-54">
                                 <img
                                     className="Avatar AuthorInfo-avatar" width="24" height="24"
-                                    src="https://pic4.zhimg.com/v2-b4dfde394e429efe34225bc97080da81_s.jpg"
+                                    src={"data:image/png;base64," + this.props.itemInfo.picture}
                                     srcset="https://pic4.zhimg.com/v2-b4dfde394e429efe34225bc97080da81_xs.jpg 2x"
-                                    alt="看着不像好人"/>
+                                    alt={this.props.itemInfo.author}/>
                             </a>
                         </div>
                     </div>
@@ -34,10 +34,9 @@ class FeedSource extends Component {
                             <div className="Popover">
                                 <div id="Popover5-toggle" aria-haspopup="true"
                                      aria-expanded="false" aria-owns="Popover5-content">
-                                    <a
-                                        className="UserLink-link" data-za-detail-view-element_name="User"
-                                        target="_blank"
-                                        href="//www.zhihu.com/people/bao-zi-lian-54">看着不像好人
+                                    <a className="UserLink-link" data-za-detail-view-element_name="User"
+                                        target="_blank" href="//www.zhihu.com/people/bao-zi-lian-54">
+                                        {this.props.itemInfo.author}
                                     </a>
                                 </div>
                             </div>

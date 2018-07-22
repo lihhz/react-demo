@@ -29,11 +29,11 @@ class Header extends Component {
         return (
             <header className={`Sticky AppHeader ${this.props.scrollTop > 0 ? 'is-fixed' : ''}`} style={this.props.scrollTop > 0 ? {width: this.state.clientWidth+'px', top: '0px', left: '0px'} : {width: this.state.clientWidth+'px'}}>
                 <div className="AppHeaderInner">
-                    <a href="//www.zhihu.com" aria-label="知乎">
+                    <a href="/" aria-label="知乎">
                         <Logo/>
                     </a>
                     <nav role="navigation" className="AppHeader-nav">
-                        <a className="AppHeader-navItem is-active" href="//www.zhihu.com/">首页</a>
+                        <a className="AppHeader-navItem is-active" href="/">首页</a>
                         <a className="AppHeader-navItem" href="//www.zhihu.com/explore">发现</a>
                         <a className="AppHeader-navItem" href="//www.zhihu.com/topic">话题</a>
                     </nav>

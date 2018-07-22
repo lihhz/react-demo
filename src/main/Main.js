@@ -7,8 +7,8 @@ class Main extends Component {
         return (
             <main role='main' className="App-main">
                 <div className="ContentLayout">
-                    <ContentLayoutMainColumn/>
-                    <ContentLayoutSideColumn scrollTop={this.props.scrollTop}/>
+                    <ContentLayoutMainColumn pageParam={this.props.pageParam}/>
+                    <ContentLayoutSideColumn pageParam={this.props.pageParam}/>
                 </div>
             </main>
         );

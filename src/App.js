@@ -1,26 +1,35 @@
 import React, {Component} from 'react';
-import './App.css';
 import Header from './header/Header';
 import Main from "./main/Main";
 
+import $ from 'jquery';
 class App extends Component {
 
     constructor() {
         super();
         this.state = {
-            scrollTop: 0
+            scrollTop: 0,
+            isBottom: false,
+            img:null
         };
         this.scrollHandler = this.handleScroll.bind(this);
     }
 
     componentDidMount() {
+        let that = this;
+        $.post('http://localhost:8081/web-spider/baiduBaikeUserInfo/selectByPrimaryKey',{id:866},function (data,status) {
+            that.setState({img:data.picture});
+        });
         window.addEventListener('scroll', this.scrollHandler);
     }
 
-
     handleScroll(event) {
-        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        this.setState({scrollTop: scrollTop});
+        let bodyEle = document.documentElement || document.body;
+        let clientHeight = bodyEle.clientHeight;
+        let scrollHeight = bodyEle.scrollHeight;
+        let scrollTop = document.body.scrollTop;
+        let isBottom = (clientHeight + scrollTop === scrollHeight);
+        this.setState({scrollTop: scrollTop, isBottom: isBottom});
     }
 
     render() {
@@ -28,7 +37,7 @@ class App extends Component {
             <div className="App">
                 <div>
                     <div>
-                        <Header scrollTop ={this.state.scrollTop} />
+                        <Header scrollTop={this.state.scrollTop}/>
                         {this.state.scrollTop > 0 ?
                             <div className="Sticky--holder"
                                  style={{
@@ -46,7 +55,7 @@ class App extends Component {
                             : ''
                         }
                     </div>
-                    <Main scrollTop ={this.state.scrollTop} />
+                    <Main pageParam={this.state}/>
                 </div>
             </div>
         );
