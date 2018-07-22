@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import Login from '../registe/Registe';
+import Registe from '../sign/registe/Registe';
+import Login from "../sign/login/Login";
 
 class ContentLayoutSideColumn extends Component {
     constructor(){
@@ -9,11 +10,11 @@ class ContentLayoutSideColumn extends Component {
             showLogin:false
         };
     }
-    showLogin(){
+    showSign(flag){
         let newDIV = document.createElement('div');
         let desktop = document.getElementById('app-body');
         desktop.appendChild(newDIV);
-        ReactDOM.render(<Login/>, newDIV);
+        ReactDOM.render(flag === 'login' ? <Login/> : <Registe/>, newDIV);
     }
     render() {
         return (
@@ -26,10 +27,10 @@ class ContentLayoutSideColumn extends Component {
                                     <div className="HomeSidebar-signBannerHeader">
                                         <div className="HomeSidebar-signBannerTitle">加入知乎<br/>发现更大的世界</div>
                                         <div className="HomeSidebar-signBannerActions">
-                                            <button data-za-detail-view-id="2278" type="button"
+                                            <button data-za-detail-view-id="2278" type="button" onClick={this.showSign.bind(this,'login')}
                                                     className="Button HomeSidebar-signBannerButton Button--blue Button--spread">登录
                                             </button>
-                                            <button data-za-detail-view-id="2277" type="button" onClick={this.showLogin.bind(this)}
+                                            <button data-za-detail-view-id="2277" type="button" onClick={this.showSign.bind(this,'registe')}
                                                     className="Button HomeSidebar-signBannerButton Button--primary Button--blue Button--spread">注册
                                             </button>
                                         </div>

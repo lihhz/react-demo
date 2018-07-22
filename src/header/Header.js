@@ -6,10 +6,10 @@ import IconSearch from './icon/IconSearch.js';
 import ZiBell from "./icon/ZiBell";
 import ZiProfile from "./icon/ZiProfile";
 import ZiComments from "./icon/ZiComments";
-import Login from "../registe/Registe";
+import Registe from "../sign/registe/Registe";
 
 class Header extends Component {
-    modal = <Login/>;
+    modal = <Registe/>;
     login(){
         ReactDOM.render(this.modal,document.body);
     }
